@@ -4,6 +4,7 @@ import com.castro.DTO.GestaoEscolar.dto.request.CursoRequest;
 import com.castro.DTO.GestaoEscolar.dto.response.CursoResponse;
 import com.castro.DTO.GestaoEscolar.dto.response.TurmaResponse;
 import com.castro.DTO.GestaoEscolar.service.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class CursoController {
     public CursoController(CursoService service) { this.service = service; }
 
     @PostMapping
-    public ResponseEntity<CursoResponse> criar(@RequestBody CursoRequest request) {
+    public ResponseEntity<CursoResponse> criar(@Valid @RequestBody CursoRequest request) {
         return ResponseEntity.ok(service.salvar(request));
     }
 

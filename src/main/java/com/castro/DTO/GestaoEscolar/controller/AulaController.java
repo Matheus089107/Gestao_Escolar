@@ -3,6 +3,7 @@ package com.castro.DTO.GestaoEscolar.controller;
 import com.castro.DTO.GestaoEscolar.dto.request.AulaRequest;
 import com.castro.DTO.GestaoEscolar.dto.response.AulaResponse;
 import com.castro.DTO.GestaoEscolar.service.AulaService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class AulaController {
     public AulaController(AulaService service) { this.service = service; }
 
     @PostMapping
-    public ResponseEntity<AulaResponse> agendar(@RequestBody AulaRequest request) {
+    public ResponseEntity<AulaResponse> agendar(@Valid @RequestBody AulaRequest request) {
         return ResponseEntity.ok(service.cadastrar(request));
     }
 }

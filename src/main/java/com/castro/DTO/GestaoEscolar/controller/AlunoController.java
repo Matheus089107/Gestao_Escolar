@@ -3,6 +3,7 @@ import com.castro.DTO.GestaoEscolar.dto.request.AlunoRequest;
 import com.castro.DTO.GestaoEscolar.dto.response.AlunoResponse;
 import com.castro.DTO.GestaoEscolar.dto.response.NotaResponse;
 import com.castro.DTO.GestaoEscolar.service.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public ResponseEntity<AlunoResponse> cadastrar(@RequestBody AlunoRequest request) {
+    public ResponseEntity<AlunoResponse> cadastrar(@Valid @RequestBody AlunoRequest request) {
         return ResponseEntity.ok(alunoService.cadastrar(request));
     }
 
